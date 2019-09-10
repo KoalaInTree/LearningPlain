@@ -1,11 +1,10 @@
-package com.djcao;
+package com.djcao.reactor;
 
-import static com.djcao.SystemConfig.PORT;
+import static com.djcao.reactor.SystemConfig.PORT;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
 
 /**
  * @author djcao

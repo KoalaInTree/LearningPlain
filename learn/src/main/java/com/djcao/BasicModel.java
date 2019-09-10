@@ -18,7 +18,7 @@ public class BasicModel implements Runnable {
         try {
             ServerSocket ss = new ServerSocket(PORT);
             while (!Thread.interrupted()){
-                new Thread().start();
+                new Thread(new Handler(ss.accept())).start();
             }
         } catch (IOException e) {
             e.printStackTrace();

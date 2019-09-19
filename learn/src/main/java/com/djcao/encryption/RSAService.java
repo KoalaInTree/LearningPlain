@@ -54,7 +54,7 @@ public class RSAService {
     public static void main(String[] args)
         throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException,
         IllegalBlockSizeException, BadPaddingException {
-        RSAService aesService = new RSAService("1234");
+        /*RSAService aesService = new RSAService("1234");
         String encode = aesService.encode("哈哈哈");
         System.out.println(encode);
         String decode = aesService.decode(encode);
@@ -63,6 +63,8 @@ public class RSAService {
         String encode1 = aesService.encode("哈哈哈");
         System.out.println(encode1);
         String decode1 = aesService.decode(encode1);
-        System.out.println(decode1);
+        System.out.println(decode1);*/
+        System.out.println(Double.valueOf("0").compareTo(Double.valueOf("0")));
+        System.out.println(Integer.MAX_VALUE);
     }
 }

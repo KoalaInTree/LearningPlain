@@ -1,7 +1,9 @@
-package com.djcao.reactor;
+package com.djcao.reactor.basic;
 
 import java.io.IOException;
 import java.net.Socket;
+
+import com.djcao.reactor.SystemConfig;
 
 /**
  * @author djcao
@@ -10,7 +12,7 @@ import java.net.Socket;
  */
 public class BasicClient {
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("localhost",SystemConfig.PORT);
+        Socket socket = new Socket("localhost", SystemConfig.PORT);
         if (socket.isConnected()){
             byte[] send = "hello".getBytes();
             socket.getOutputStream().write(send);

@@ -14,6 +14,9 @@ public class User {
         this.age = age;
     }
 
+    public User() {
+    }
+
     private Long id;
     private String name;
     private Integer age;

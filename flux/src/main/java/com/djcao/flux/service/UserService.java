@@ -1,6 +1,7 @@
 package com.djcao.flux.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -18,15 +19,18 @@ public class UserService {
     private Map<String, User> userMap = new ConcurrentHashMap<>();
 
     public void setUser(String userId, User user) {
+        System.out.println(Thread.currentThread().getName());
         userMap.put(userId, user);
     }
 
     public Mono<User> findUserById(String userId) {
+        System.out.println(Thread.currentThread().getName());
         User user = userMap.getOrDefault(userId, new User("nick", 18));
         return Mono.just(user);
     }
 
     public Flux<User> findUserList() {
+        System.out.println(Thread.currentThread().getName());
         List<User> userList = new ArrayList<>();
         Set<Entry<String, User>> entries = userMap.entrySet();
         entries.stream().forEach(entry -> userList.add(entry.getValue()));

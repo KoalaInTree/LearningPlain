@@ -1,13 +1,16 @@
 package com.djcao.flux.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import com.djcao.flux.model.User;
+import com.djcao.flux.service.DateUtils;
 import com.djcao.flux.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,18 +29,24 @@ import reactor.core.publisher.Mono;
  */
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
 
     @Autowired
     private UserService userService;
     @GetMapping("get/{user}")
     public Mono<User> getUser(@PathVariable("user") String  id){
+        System.out.println(Thread.currentThread());
+        System.out.println(DateUtils.stdFormat(new Date()));
         return userService.findUserById(id);
     }
 
     @PostMapping("add/{id}")
     public Mono<User> getUser(@PathVariable("id") String id,@RequestBody User user){
+        System.out.println(Thread.currentThread().getName());
+        System.out.println(DateUtils.stdFormat(new Date()));
         userService.setUser(id,user);
+        System.out.println(DateUtils.stdFormat(new Date()));
         return Mono.just(user);
     }
 
@@ -48,6 +57,7 @@ public class UserController {
 
     @GetMapping("getAll")
     public Flux<User> findUserList(){
+        System.out.println(Thread.currentThread().getName());
         String i = "";
         Flux<User> userList = userService.findUserList();
         System.out.println(123);

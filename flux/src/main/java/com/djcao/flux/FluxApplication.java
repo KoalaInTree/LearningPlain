@@ -1,4 +1,4 @@
-package com.djcao.flux;
+package main.java.com.djcao.flux;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

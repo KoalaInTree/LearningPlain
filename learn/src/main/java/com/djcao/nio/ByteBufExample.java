@@ -15,6 +15,8 @@ public class ByteBufExample {
         ByteBuf byteBuf = PooledByteBufAllocator.DEFAULT.heapBuffer(1024);
         byteBuf.writeBoolean(true);
 
+
+
     }
 
     public static void main(String[] args) {

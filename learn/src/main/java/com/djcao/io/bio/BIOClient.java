@@ -6,6 +6,9 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
+ *
+ * 使用心跳包维持socket的连接
+ *
  * @author djcao
  * @workcode BG389966
  * @date 2019/12/17
@@ -16,19 +19,22 @@ public class BIOClient {
         Socket socket = null;
         try {
             socket = new Socket();
-            socket.bind(new InetSocketAddress("127.0.0.1",1234));
             socket.connect(new InetSocketAddress("127.0.0.1",8624));
             while (true){
                 if (!socket.isConnected()){
                     continue;
                 }
                 OutputStream outputStream = socket.getOutputStream();
-                outputStream.write("8848".getBytes());
+                outputStream.write("#########################".getBytes());
                 outputStream.flush();
-                Thread.sleep(10 * 1000);
+                Thread.sleep(2 * 1000);
+                socket.shutdownOutput();
+                socket.shutdownInput();
+                outputStream.close();
+                socket.close();
+                Thread.sleep(8 * 1000);
                 break;
             }
-            socket.close();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,18 +1,16 @@
 package com.djcao.io.bio;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +19,9 @@ import java.util.concurrent.atomic.AtomicLong;
 import javafx.util.Pair;
 
 /**
+ *
+ * 使用心跳包维持socket的连接
+ *
  * @author djcao
  * @workcode BG389966
  * @date 2019/12/17
@@ -141,10 +142,15 @@ public class BIOServer {
             "的消息:");
         try {
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024*1024);
-            SocketChannel channel = socket.getChannel();
-            channel.read(byteBuffer);
-            byteBuffer.flip();
-            System.out.println(new String(byteBuffer.array(), StandardCharsets.UTF_8));
+            InputStream inputStream = socket.getInputStream();
+            byte[] buffer = new byte[1024*3/2];
+            int length;
+            StringBuilder stringBuilder = new StringBuilder();
+            while (inputStream.available()>0){
+                length = inputStream.read(buffer);
+                stringBuilder.append(new String(buffer,0,length,StandardCharsets.UTF_8));
+            }
+            System.out.println(stringBuilder.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,12 +168,24 @@ public class BIOServer {
             (InetSocketAddress)socket.getRemoteSocketAddress();
         connectedSocket.remove(getRemoteInstanceId(
             (InetSocketAddress) socket.getRemoteSocketAddress()));
+        try {
+            socket.shutdownInput();
+            socket.shutdownOutput();
+            if (socket.getInputStream()!= null){
+                socket.getInputStream().close();
+            }
+            if (socket.getOutputStream() != null){
+                socket.getOutputStream().close();
+            }
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println(socketAddress.getHostString() + ":" + socketAddress.getPort()+"断开连接成功");
     }
 
     public Pair<Event,Socket> findEvent(Socket socket) throws IOException {
-        if (socket.isConnected()){
-        }else if (socket.isClosed()){
+        if (socket.isClosed()){
             return new Pair<>(Event.UNCONNECTED,socket);
         }else if (socket.getInputStream().available() > 0){
             return new Pair<>(Event.READABLE,socket);

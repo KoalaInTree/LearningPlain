@@ -1,7 +1,6 @@
-package com.djcao.nio;
+package com.djcao.io.nio;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.PooledByteBufAllocator;
 
 /**

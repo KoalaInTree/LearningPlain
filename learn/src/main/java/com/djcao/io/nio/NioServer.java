@@ -12,6 +12,9 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ *  SelectionKey.cancel  取消订阅当前事件
+ *  selectedKeys()  remove 表示处理完成
+ *
  * @author djcao
  * @date 2019/12/19 10:58
  */

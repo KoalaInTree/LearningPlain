@@ -11,9 +11,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 /**
+ * SelectionKey.cancel  取消订阅当前事件
+ * selectedKeys()  remove 表示处理完成
  * @author djcao
- * @workcode wb-cdj390654
- * @date 2019-12-18
+ * @date 2019/12/19 10:58
  */
 public class NioClient {
     Selector selector;
@@ -55,16 +56,15 @@ public class NioClient {
                         byteBuffer.compact();
                     }
                     System.out.println("收到来自服务端的消息:"+stringBuilder.toString());
-
+                    try {
+                        Thread.sleep(5 * 1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     ByteBuffer allocate = ByteBuffer.allocate(1024);
                     allocate.put(("现在是:"+System.currentTimeMillis()).getBytes());
                     allocate.flip();
                     channel.write(allocate);
-                    try {
-                        Thread.sleep(2 * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }else {
                     System.out.println("不知道是啥");
                 }

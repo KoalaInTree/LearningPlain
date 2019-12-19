@@ -4,8 +4,7 @@ import java.nio.channels.SocketChannel;
 
 /**
  * @author djcao
- * @workcode BG389966
- * @date 2019/9/29
+ * @date 2019/12/19 11:00 
  */
 public interface Handler {
 

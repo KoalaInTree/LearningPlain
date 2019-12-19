@@ -21,10 +21,8 @@ import javafx.util.Pair;
 /**
  *
  * 使用心跳包维持socket的连接
- *
  * @author djcao
- * @workcode BG389966
- * @date 2019/12/17
+ * @date 2019/12/19 10:58
  */
 public class BIOServer {
 

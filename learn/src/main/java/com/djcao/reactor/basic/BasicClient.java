@@ -7,8 +7,7 @@ import com.djcao.reactor.SystemConfig;
 
 /**
  * @author djcao
- * @workcode BG389966
- * @date 2019/9/10
+ * @date 2019/12/19 11:00 
  */
 public class BasicClient {
     public static void main(String[] args) throws IOException {

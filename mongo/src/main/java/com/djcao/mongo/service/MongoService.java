@@ -6,8 +6,7 @@ import com.djcao.mongo.model.Item;
 
 /**
  * @author djcao
- * @workcode BG389966
- * @date 2019/12/11
+ * @date 2019/12/19 10:59 
  */
 public interface MongoService {
 

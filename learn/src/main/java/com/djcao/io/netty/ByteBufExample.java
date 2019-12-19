@@ -5,8 +5,7 @@ import io.netty.buffer.ByteBufAllocator;
 
 /**
  * @author djcao
- * @workcode BG389966
- * @date 2019/12/17
+ * @date 2019/12/19 10:59 
  */
 public class ByteBufExample {
 

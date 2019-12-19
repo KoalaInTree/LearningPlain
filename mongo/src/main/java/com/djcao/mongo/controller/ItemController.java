@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author djcao
- * @workcode BG389966
- * @date 2019/12/11
+ * @date 2019/12/19 10:59 
  */
 @RestController
 @RequestMapping("item")

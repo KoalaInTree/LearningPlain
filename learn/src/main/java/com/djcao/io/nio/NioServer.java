@@ -13,8 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author djcao
- * @workcode wb-cdj390654
- * @date 2019-12-18
+ * @date 2019/12/19 10:58
  */
 public class NioServer {
 
@@ -62,16 +61,15 @@ public class NioServer {
                         byteBuffer.compact();
                     }
                     System.out.println(socketChannelKey+" say:"+stringBuilder.toString());
-
+                    try {
+                        Thread.sleep(5 * 1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     ByteBuffer allocate = ByteBuffer.allocate(1024);
                     allocate.put(("现在是:"+System.currentTimeMillis()).getBytes());
                     allocate.flip();
                     channel.write(allocate);
-                    try {
-                        Thread.sleep(2 * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }else {
                     System.out.println("未处理的操作:"+next.interestOps());
                 }

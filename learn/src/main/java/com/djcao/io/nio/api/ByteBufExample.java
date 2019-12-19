@@ -5,8 +5,7 @@ import io.netty.buffer.PooledByteBufAllocator;
 
 /**
  * @author djcao
- * @workcode wb-cdj390654
- * @date 2019-12-16
+ * @date 2019/12/19 10:57 
  */
 public class ByteBufExample {
 

@@ -1,8 +1,10 @@
 package com.djcao.redis.controller;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import com.djcao.redis.service.DistributeLock;
+import com.djcao.redis.service.RedisBitHelper;
 import com.djcao.redis.service.RedisDistributeLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -24,6 +26,8 @@ public class RedisController {
 
     @Autowired
     private DistributeLock redisDLock;
+    @Autowired
+    private RedisBitHelper redisBitHelper;
 
     @RequestMapping("heath/{key}")
     public String heath(@PathVariable String key) {
@@ -48,5 +52,15 @@ public class RedisController {
     @RequestMapping("release2/{key}")
     public Boolean release2(@PathVariable String key) {
         return redisDLock.unlock(key);
+    }
+
+    @RequestMapping("signSin/{key}")
+    public Boolean signSin(@PathVariable Long key) {
+        return redisBitHelper.dailySign(key);
+    }
+
+    @RequestMapping("isSignIn/{key}")
+    public Boolean isSignIn(@PathVariable Long key) {
+        return redisBitHelper.isSign(key,new Date());
     }
 }

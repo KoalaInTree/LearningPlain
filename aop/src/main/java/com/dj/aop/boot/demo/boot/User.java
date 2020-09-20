@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 public class User {
     public String hello() {
         System.out.println("hi");
+        if (true) {
+            throw new RuntimeException();
+        }
         return "hi";
     }
 }

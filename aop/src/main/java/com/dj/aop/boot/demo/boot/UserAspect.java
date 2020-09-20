@@ -2,6 +2,8 @@ package com.dj.aop.boot.demo.boot;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -33,5 +35,15 @@ public class UserAspect {
     @After("execution(* com.dj.aop.boot.demo.boot.User.*(..))")
     public void after() {
         System.out.println("after");
+    }
+
+    @AfterReturning("execution(* com.dj.aop.boot.demo.boot.User.*(..))")
+    public void afterReturn() {
+        System.out.println("afterReturn");
+    }
+
+    @AfterThrowing("execution(* com.dj.aop.boot.demo.boot.User.*(..))")
+    public void afterThrow() {
+        System.out.println("afterThrow");
     }
 }

@@ -19,14 +19,12 @@ import javax.crypto.SecretKey;
  * @date 2019-09-12
  */
 public class AESService {
-    private static String PASSWORD = "1234";
-    private static final String ALGORITHM = "DES";// DES AES
+    private static final String ALGORITHM = "AES";// DES AES
     private static final SecureRandom sr = new SecureRandom();
     private static Cipher encryptCipher;
     private static Cipher decryptCipher;
 
-    public AESService(String password) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
-        PASSWORD = password;
+    public AESService() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException {
         KeyGenerator instance = KeyGenerator.getInstance(ALGORITHM);
         SecretKey secretKey = instance.generateKey();
         encryptCipher = Cipher.getInstance(ALGORITHM);
@@ -48,7 +46,7 @@ public class AESService {
     public static void main(String[] args)
         throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException,
         IllegalBlockSizeException, BadPaddingException {
-        AESService aesService = new AESService("1234");
+        AESService aesService = new AESService();
         String encode = aesService.encode("哈哈哈");
         System.out.println(encode);
         String decode = aesService.decode(encode);

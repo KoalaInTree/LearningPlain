@@ -26,10 +26,13 @@ public class UserAspect {
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("before around");
 
-        Object proceed = pjp.proceed();
-
+        try {
+            return pjp.proceed();
+        } catch (Throwable throwable) {
+            System.out.println("after around catch");
+        }
         System.out.println("after around");
-        return proceed;
+        return null;
     }
 
     @After("execution(* com.dj.aop.boot.demo.boot.User.*(..))")
@@ -38,12 +41,12 @@ public class UserAspect {
     }
 
     @AfterReturning("execution(* com.dj.aop.boot.demo.boot.User.*(..))")
-    public void afterReturn() {
-        System.out.println("afterReturn");
+    public void afterreturn() {
+        System.out.println("after return");
     }
 
     @AfterThrowing("execution(* com.dj.aop.boot.demo.boot.User.*(..))")
     public void afterThrow() {
-        System.out.println("afterThrow");
+        System.out.println("after throw");
     }
 }

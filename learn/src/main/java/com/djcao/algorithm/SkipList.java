@@ -1,6 +1,9 @@
 package com.djcao.algorithm;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * @author djcao
@@ -13,6 +16,7 @@ public class SkipList {
     private Random random = new Random();
 
     public Node find(int value) {
+        List<Integer> collect = Arrays.stream(new int[10]).boxed().collect(Collectors.toList());
         Node p = head;
         for (int i = levelCount - 1 ; i >= 0; i--) {
             while (p.getNext(i) != null && p.getNext(i).getValue() < value) {

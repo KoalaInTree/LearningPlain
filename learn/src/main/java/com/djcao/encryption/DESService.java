@@ -12,7 +12,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.omg.PortableServer.ThreadPolicy;
 
 /**
  * @author djcao

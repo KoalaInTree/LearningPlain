@@ -46,4 +46,8 @@ public class RedisBitHelper {
         return redisTemplate.opsForValue().getBit(userId.toString(), dateToDayOfYear(date));
     }
 
+    public static void main(String[] args) {
+        new RedisTemplate();
+    }
+
 }

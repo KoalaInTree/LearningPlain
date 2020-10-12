@@ -39,6 +39,7 @@ public class SkipList {
         for (int i = 0; i < updateArr.length; i++) {
         }
 
+        return null;
     }
 
     private int randomLevel() {

@@ -1,0 +1,3 @@
+org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+  com.dj.web.demo.CustomPropertySourceLocator,\
+  com.dj.web.autoconfig.XssServletFilterAutoConfiguration

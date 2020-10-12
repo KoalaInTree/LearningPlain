@@ -14,6 +14,10 @@ public abstract class AbstractSortStrategy {
         return a.compareTo(b) < 0;
     }
 
+    public boolean lessAndEq(Comparable a , Comparable b) {
+        return a.compareTo(b) <= 0;
+    }
+
     public void swap(Comparable[] a, int i, int j) {
         Comparable temp = a[i];
         a[i] = a[j];

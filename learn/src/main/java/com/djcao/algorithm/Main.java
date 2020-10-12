@@ -7,7 +7,7 @@ package com.djcao.algorithm;
 public class Main {
 
     public static void main(String[] args) {
-        SortStrategy sortStrategy = new ShellSortStrategy();
+        SortStrategy sortStrategy = new FastSortStrategy();
         Comparable[] a = {1, 5, 1, 3, 7, 8, 5, 6, 9, 0, 4, 2};
         sortStrategy.sort(a);
         assert sortStrategy.isSort(a);

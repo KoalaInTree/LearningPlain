@@ -1,0 +1,15 @@
+spring:
+  kafka:
+    bootstrap-servers: 192.168.159.133:9092,192.168.159.134:9092,192.168.159.135:9092
+    consumer:
+      group-id: leanPlanGroup
+      enable-auto-commit: false
+      auto-offset-reset: latest
+      max-poll-records: 30
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    listener:
+      concurrency: 10
+      type: batch
+

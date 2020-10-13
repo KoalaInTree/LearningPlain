@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: learn-plain
+  cloud:
+    consul:
+      host: 192.168.159.131
+      port: 32774
+      enabled: false
+
+best:
+  rd:
+    - q9
+    - d9
+    - thai9
+    - v5
+  maps:
+    key1: value1
+    key2: value2
+  varMapList:
+    key1:
+      - foo
+      - bar
+    key2:
+      - ls
+      - sl
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: ["prometheus","health"]

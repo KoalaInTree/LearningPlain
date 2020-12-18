@@ -1,6 +1,7 @@
 package com.dj.web;
 
 import com.dj.web.config.BestConfig;
+import com.dj.web.interceptor.LoginInterceptor;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.Counter;
@@ -15,11 +16,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 @RestController
 @EnableDiscoveryClient
-public class WebApplication {
+public class WebApplication implements WebMvcConfigurer {
 
     @Autowired
     private Ser ser;
@@ -55,5 +59,12 @@ public class WebApplication {
         return  Counter.build()
             .name("http_requests_total")
             .help("http请求总计数").register(collectorRegistry);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/loginPage").excludePathPatterns("/login");
     }
 }

@@ -18,9 +18,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class FormatUtils {
     // 多单号in
-    public static Set<String> formatEach(Collection<String> items, String format,int inSize) {
+    public static List<String> formatEach(Collection<String> items, String format,int inSize) {
         List<List<String>> partition = Lists.partition(new ArrayList<>(items), inSize);
-        Set<String> rst = new HashSet<>();
+        List<String> rst = new ArrayList<>();
         for (List<String> x : partition) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("('");
@@ -33,8 +33,8 @@ public class FormatUtils {
     }
 
     public static void main(String[] args) throws IOException {
-        Set<String> strings = FileUtils.unqFile("C:\\\\Users\\\\bg389966\\\\Desktop\\\\ddd.txt");
-        Set<String> strings1 = formatEach(strings, "select bill_code,created_time from "
+        List<String> strings = FileUtils.unqFile("C:\\\\Users\\\\bg389966\\\\Desktop\\\\ddd.txt");
+        List<String> strings1 = formatEach(strings, "select bill_code,created_time from "
             + "ge_balance_detail where bill_code in %s"
             + "and balance_date > sysdate - 0.5", 999);
 

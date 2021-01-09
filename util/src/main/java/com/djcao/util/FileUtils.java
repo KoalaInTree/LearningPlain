@@ -31,7 +31,7 @@ public class FileUtils {
     public static Set<String> unqFiles(List<String> files) throws IOException {
         Set<String> fileSets = new HashSet<>();
         for (int i = 0; i < files.size(); i++) {
-            Set<String> strings = unqFile(files.get(i));
+            List<String> strings = unqFile(files.get(i));
             fileSets.addAll(strings);
         }
         return fileSets;
@@ -43,10 +43,23 @@ public class FileUtils {
      * @return
      * @throws FileNotFoundException
      */
-    public static Set<String> unqFile(String file) throws IOException {
+    public static List<String> unqFile(String file) throws IOException {
         BufferedReader bufferedReader = getBufferedReader(file);
-        Set<String> collect = bufferedReader.lines().filter(StringUtils::isNotBlank)
-            .collect(Collectors.toSet());
+        List<String> collect = bufferedReader.lines().filter(StringUtils::isNotBlank).distinct()
+            .collect(Collectors.toList());
+        return collect;
+    }
+
+    /**
+     * 单文件去重
+     * @param file
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static List<String> unqFile(String file,IFileFormat fileFormat) throws IOException {
+        BufferedReader bufferedReader = getBufferedReader(file);
+        List<String> collect = bufferedReader.lines().filter(StringUtils::isNotBlank).map(fileFormat::format).distinct()
+                .collect(Collectors.toList());
         return collect;
     }
 
@@ -77,9 +90,9 @@ public class FileUtils {
      * @return
      * @throws IOException
      */
-    public static Set<String> fileNotExistAtMain(String mainFileName,String fileName) throws IOException {
-        Set<String> mainFileNameSet = unqFile(mainFileName);
-        Set<String> fileNameSet = unqFile(fileName);
+    public static List<String> fileNotExistAtMain(String mainFileName,String fileName) throws IOException {
+        List<String> mainFileNameSet = unqFile(mainFileName);
+        List<String> fileNameSet = unqFile(fileName);
         fileNameSet.removeAll(mainFileNameSet);
         return mainFileNameSet;
     }

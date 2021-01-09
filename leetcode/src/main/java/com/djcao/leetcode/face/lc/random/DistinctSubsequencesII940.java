@@ -1,4 +1,4 @@
-package com.djcao.leetcode.face.lc;
+package com.djcao.leetcode.face.lc.random;
 
 import java.util.Arrays;
 

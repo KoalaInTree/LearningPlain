@@ -1,4 +1,4 @@
-package com.djcao.leetcode.face.lc;
+package com.djcao.leetcode.face.lc.random;
 
 /**
  * 给你两个数组 nums1 和 nums2 。

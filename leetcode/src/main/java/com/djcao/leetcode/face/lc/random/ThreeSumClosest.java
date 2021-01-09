@@ -1,4 +1,4 @@
-package com.djcao.leetcode.face;
+package com.djcao.leetcode.face.lc.random;
 
 class ThreeSumClosest {
     public int threeSumClosest(int[] nums, int target) {

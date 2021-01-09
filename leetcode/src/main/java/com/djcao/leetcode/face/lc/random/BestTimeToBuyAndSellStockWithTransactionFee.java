@@ -1,4 +1,4 @@
-package com.djcao.leetcode.face.lc;
+package com.djcao.leetcode.face.lc.random;
 
 /**
  * 714. 买卖股票的最佳时机含手续费

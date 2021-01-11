@@ -50,6 +50,8 @@ public class ReConstructBinaryTree {
         TreeNode(int x) {
             val = x;
         }
+
+
     }
 
 }

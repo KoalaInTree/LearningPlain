@@ -5,7 +5,7 @@ package com.djcao.leetcode.face.zj66;
  *
  * 比如n=3时，2*3的矩形块有3种覆盖方法：
  */
-public class RectCover {
+public class T10RectCover {
     public static int rectCover(int target) {
         if (target == 0) {
             return 0;

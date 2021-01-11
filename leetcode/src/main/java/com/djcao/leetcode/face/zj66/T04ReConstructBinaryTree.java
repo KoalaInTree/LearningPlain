@@ -11,7 +11,7 @@ package com.djcao.leetcode.face.zj66;
  * 复制
  * {1,2,5,3,4,6,7}
  */
-public class ReConstructBinaryTree {
+public class T04ReConstructBinaryTree {
     public static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
         if (pre == null) {
             return null;

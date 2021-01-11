@@ -12,7 +12,7 @@ package com.djcao.leetcode.face.zj66;
  *
  * 3
  */
-public class Fibonacci {
+public class T07Fibonacci {
 
     public static int Fibonacci(int n) {
         if(n==0){

@@ -18,7 +18,7 @@ package com.djcao.leetcode.face.zj66;
  * 
  * 5
  */
-public class JumpFloor {
+public class T08JumpFloor {
     public static int JumpFloor(int target) {
         int a = 1, b = 1,c;
         for (int i = 2; i <= target; i++) {

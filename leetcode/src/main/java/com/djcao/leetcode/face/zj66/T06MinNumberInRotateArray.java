@@ -13,7 +13,7 @@ package com.djcao.leetcode.face.zj66;
  * 复制
  * 1
  */
-public class MinNumberInRotateArray {
+public class T06MinNumberInRotateArray {
     public static int minNumberInRotateArray(int [] array) {
         int N = array.length;
         int right = N - 1, left = 0,mid;

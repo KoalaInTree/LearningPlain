@@ -11,7 +11,7 @@ package com.djcao.leetcode.face.zj66;
  * 
  * 4
  */
-public class JumpFloorII {
+public class T09JumpFloorII {
 
     public int JumpFloorII(int target) {
         int a = 1;

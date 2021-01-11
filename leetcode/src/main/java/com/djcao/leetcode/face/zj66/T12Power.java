@@ -13,7 +13,7 @@ package com.djcao.leetcode.face.zj66;
  * 
  * 8.00000
  */
-public class Power {
+public class T12Power {
 
     public static double Power2(double base, int exponent) {
         double res = 1;

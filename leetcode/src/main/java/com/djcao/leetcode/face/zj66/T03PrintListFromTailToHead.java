@@ -3,7 +3,10 @@ package com.djcao.leetcode.face.zj66;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class PrintListFromTailToHead {
+/**
+ * 输入一个链表，按链表从尾到头的顺序返回一个ArrayList。
+ */
+public class T03PrintListFromTailToHead {
 
     /**
      * 空间复杂度：O(1)

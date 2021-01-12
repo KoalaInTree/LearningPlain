@@ -1,5 +1,7 @@
 package com.djcao.leetcode.face.zj66;
 
+import com.djcao.leetcode.face.common.ListNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -49,15 +51,6 @@ public class T03PrintListFromTailToHead {
             res.add(listNodes.pop());
         }
         return res;
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
     }
 
     public static void main(String[] args) {
